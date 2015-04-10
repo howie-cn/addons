@@ -3,32 +3,29 @@
     'name': "auth_oauth_extended",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        for qq/weixin/weibo authorization and login into Odoo """,
 
     'description': """
-        Long description of module's purpose
+Allow users to login through OAuth2 Provider those in china.
+=============================================================
+QQ
+Weixin
+Weibo
+etc.
+
     """,
 
-    'author': "Your Company",
-    'website': "http://www.yourcompany.com",
-
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/master/openerp/addons/base/module/module_data.xml
-    # for the full list
-    'category': 'Uncategorized',
+    'author': 'Odoo CN, Jeffery <jeffery9@gmail.com>',
+    'category': 'Tools',
     'version': '0.1',
 
-    # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['auth_oauth'],
 
-    # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'templates.xml',
+        'security/ir.model.access.csv',
+        'auth_oauth_view.xml',
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo.xml',
-    ],
+
+    'installable': True,
+
 }
