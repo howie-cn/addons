@@ -23,7 +23,7 @@ class auth_oauth_provider(models.Model):
 
     ]
 
-    type = fields.Selection(provider_type, 'Provider Type', required=True)
+    provider_type = fields.Selection(provider_type, 'Provider Type', required=True)
 
 
 class res_users(osv.Model):
@@ -42,11 +42,11 @@ class res_users(osv.Model):
             This method can be overridden to add alternative signin methods.
         """
         try:
-            if provider.type == 'qq':
+            if provider.provider_type == 'qq':
                 oauth_uid = validation['openid']
-            elif provider.type == 'weixin':
+            elif provider.provider_type == 'weixin':
                 oauth_uid = validation['openid']
-            elif provider.type == 'weibo':
+            elif provider.provider_type == 'weibo':
                 oauth_uid = validation['userid']
             else:
                 oauth_uid = validation['user_id']
@@ -62,11 +62,11 @@ class res_users(osv.Model):
                 return None
             state = simplejson.loads(params['state'])
             token = state.get('t')
-            if provider.type == 'qq':
+            if provider.provider_type == 'qq':
                 oauth_uid = validation['openid']
-            elif provider.type == 'weixin':
+            elif provider.provider_type == 'weixin':
                 oauth_uid = validation['openid']
-            elif provider.type == 'weibo':
+            elif provider.provider_type == 'weibo':
                 oauth_uid = validation['userid']
             else:
                 oauth_uid = validation['user_id']
@@ -95,13 +95,13 @@ class res_users(osv.Model):
         # else:
         # continue with the process
         access_token = params.get('access_token')
-        validation = self._auth_oauth_validate(cr, uid, provider, access_token)
+        validation = super(res_users, self)._auth_oauth_validate(cr, uid, provider, access_token)
         # required check
-        if provider.type == 'qq':
+        if provider.provider_type == 'qq':
             oauth_uid = validation['openid']
-        elif provider.type == 'weixin':
+        elif provider.provider_type == 'weixin':
             oauth_uid = validation['openid']
-        elif provider.type == 'weibo':
+        elif provider.provider_type == 'weibo':
             oauth_uid = validation['userid']
         else:
             oauth_uid = 'user_id'
