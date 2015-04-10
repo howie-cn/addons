@@ -2,18 +2,14 @@
 
 import logging
 
-import werkzeug.urls
-import urlparse
-import urllib2
 import simplejson
-
 import openerp
+from openerp.osv import osv
+
 from openerp.addons.auth_signup.res_users import SignupError
-from openerp.osv import osv, fields
-from openerp import SUPERUSER_ID
 
 _logger = logging.getLogger(__name__)
-from openerp import models, fields, api
+from openerp import models, fields
 
 
 class auth_oauth_provider(models.Model):
@@ -27,7 +23,7 @@ class auth_oauth_provider(models.Model):
 
     ]
 
-    type = fields.selection(provider_type, 'Provider Type', required=True)
+    type = fields.Selection(provider_type, 'Provider Type', required=True)
 
 
 class res_users(osv.Model):
