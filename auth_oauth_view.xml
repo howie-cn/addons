@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_oauth_provider_form_extended">
+            <field name="name">auth.oauth.provider.form</field>
+            <field name="model">auth.oauth.provider</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="auth_oauth.view_oauth_provider_form"
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/group/field" position="after">
+                    <field name="type"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
