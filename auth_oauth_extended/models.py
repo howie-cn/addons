@@ -2,9 +2,15 @@
 
 import logging
 
+import werkzeug.urls
+import urlparse
+import urllib2
 import simplejson
+
 import openerp
-from openerp.osv import osv
+from openerp.addons.auth_signup.res_users import SignupError
+from openerp.osv import osv, fields
+from openerp import SUPERUSER_ID
 
 from openerp.addons.auth_signup.res_users import SignupError
 
@@ -25,10 +31,26 @@ class auth_oauth_provider(models.Model):
 
     provider_type = fields.Selection(provider_type, 'Provider Type', required=True)
 
+    _defaults = {
+        'provider_type': 'other',
+    }
+
 
 class res_users(osv.Model):
     _inherit = 'res.users'
 
+
+    def _auth_oauth_rpc(self, cr, uid, endpoint, access_token, context=None):
+        params = werkzeug.url_encode({'access_token': access_token})
+        if urlparse.urlparse(endpoint)[4]:
+            url = endpoint + '&' + params
+        else:
+            url = endpoint + '?' + params
+        f = urllib2.urlopen(url)
+        response = f.read()
+        if response.find('callback') != -1:
+            response = response[response.index("(") + 1: response.rindex(")")]
+        return simplejson.loads(response)
 
     def _auth_oauth_signin(self, cr, uid, provider, validation, params, context=None):
 
