@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 
 import logging
 
@@ -11,8 +11,6 @@ import openerp
 from openerp.addons.auth_signup.res_users import SignupError
 from openerp.osv import osv, fields
 from openerp import SUPERUSER_ID
-
-from openerp.addons.auth_signup.res_users import SignupError
 
 _logger = logging.getLogger(__name__)
 from openerp import models, fields
@@ -48,7 +46,7 @@ class res_users(osv.Model):
             url = endpoint + '?' + params
         f = urllib2.urlopen(url)
         response = f.read()
-        if response.find('callback') != -1:
+        if response.find('callback') == 0:
             response = response[response.index("(") + 1: response.rindex(")")]
         return simplejson.loads(response)
 
@@ -64,14 +62,19 @@ class res_users(osv.Model):
             This method can be overridden to add alternative signin methods.
         """
         try:
-            if provider.provider_type == 'qq':
+
+            provider_obj = self.pool['auth.oauth.provider'].read(cr, uid, provider, context=context)
+            provider_type = provider_obj['provider_type']
+
+            if provider_type == 'qq':
                 oauth_uid = validation['openid']
-            elif provider.provider_type == 'weixin':
+            elif provider_type == 'weixin':
                 oauth_uid = validation['openid']
-            elif provider.provider_type == 'weibo':
+            elif provider_type == 'weibo':
                 oauth_uid = validation['userid']
             else:
                 oauth_uid = validation['user_id']
+
             user_ids = self.search(cr, uid, [("oauth_uid", "=", oauth_uid), ('oauth_provider_id', '=', provider)])
             if not user_ids:
                 raise openerp.exceptions.AccessDenied()
@@ -84,11 +87,15 @@ class res_users(osv.Model):
                 return None
             state = simplejson.loads(params['state'])
             token = state.get('t')
-            if provider.provider_type == 'qq':
+
+            provider_obj = self.pool['auth.oauth.provider'].read(cr, uid, provider, context=context)
+            provider_type = provider_obj['provider_type']
+
+            if provider_type == 'qq':
                 oauth_uid = validation['openid']
-            elif provider.provider_type == 'weixin':
+            elif provider_type == 'weixin':
                 oauth_uid = validation['openid']
-            elif provider.provider_type == 'weibo':
+            elif provider_type == 'weibo':
                 oauth_uid = validation['userid']
             else:
                 oauth_uid = validation['user_id']
@@ -103,10 +110,12 @@ class res_users(osv.Model):
                 'oauth_access_token': params['access_token'],
                 'active': True,
             }
+            _logger.info(values)
             try:
                 _, login, _ = self.signup(cr, uid, values, token, context=context)
                 return login
             except SignupError:
+                _logger.info(SignupError)
                 raise access_denied_exception
 
 
@@ -117,14 +126,17 @@ class res_users(osv.Model):
         # else:
         # continue with the process
         access_token = params.get('access_token')
-        validation = super(res_users, self)._auth_oauth_validate(cr, uid, provider, access_token)
-        # required check
-        if provider.provider_type == 'qq':
-            oauth_uid = validation['openid']
-        elif provider.provider_type == 'weixin':
-            oauth_uid = validation['openid']
-        elif provider.provider_type == 'weibo':
-            oauth_uid = validation['userid']
+        validation = self._auth_oauth_validate(cr, uid, provider, access_token)
+
+        provider_obj = self.pool['auth.oauth.provider'].read(cr, uid, provider, context=context)
+        provider_type = provider_obj['provider_type']
+
+        if provider_type == 'qq':
+            oauth_uid = 'openid'
+        elif provider_type == 'weixin':
+            oauth_uid = 'openid'
+        elif provider_type == 'weibo':
+            oauth_uid = 'userid'
         else:
             oauth_uid = 'user_id'
 
