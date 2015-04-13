@@ -1,0 +1,3 @@
+ for qq oauth provider, need to fix controller to remove '+' from the returned json like this.
+
+        kw = simplejson.loads(simplejson.dumps(kw).replace('+',''))
