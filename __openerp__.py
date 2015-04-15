@@ -23,16 +23,16 @@
     'name': "china_smb_reports",
 
     'summary': """
-        中国中小型企业财务报表
-        1，资产负债表
-        2，利润表
-        3，现金流量表""",
+        中国中小企业财务告
+        1，资产负债报告
+        2，损益报告
+        3，现金流量报告""",
 
     'description': """
         
     """,
 
-    'author': "jeffery chen fan ",
+    'author': "Odoo CN, Jeffery <jeffery9@gmail> ",
     'website': "",
 
     # Categories can be used to filter modules in modules listing
