@@ -15,6 +15,7 @@ import openerp
 from openerp import fields,models
 from openerp import http
 from openerp import SUPERUSER_ID
+from openerp.addons.auth_oauth.controllers.main import fragment_to_query_string
 from openerp.addons.auth_oauth.controllers.main import OAuthController
 from openerp.addons.auth_signup.controllers.main import AuthSignupHome as Home
 from openerp.addons.auth_signup.res_users import SignupError
