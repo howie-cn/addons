@@ -5,10 +5,14 @@
             <field name="name">auth.oauth.provider.form</field>
             <field name="model">auth.oauth.provider</field>
             <field name="type">form</field>
-            <field name="inherit_id" ref="auth_oauth.view_oauth_provider_form" />
+            <field name="inherit_id" ref="auth_oauth.view_oauth_provider_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//sheet/group/field" position="after">
+                <xpath expr="//field[@name='name']" position="after">
                     <field name="provider_type"/>
+
+                </xpath>
+                <xpath expr="//field[@name='body']" position="before">
+                    <field name="css_class"/>
                 </xpath>
             </field>
         </record>
