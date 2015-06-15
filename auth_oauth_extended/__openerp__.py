@@ -24,6 +24,7 @@ etc.
     'data': [
         'security/ir.model.access.csv',
         'auth_oauth_view.xml',
+        'auth_oauth_data.xml',
     ],
 
     'installable': True,
