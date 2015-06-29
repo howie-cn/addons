@@ -158,7 +158,7 @@ class res_users(osv.Model):
                 oauth_uid = validation['userid']
             else:
                 oauth_uid = validation['user_id']
-            email = validation.get('email', 'provider_%s_user_%s' % (provider, oauth_uid))
+            email = validation.get('email', '%_%s' % (provider_type, oauth_uid))
             name = validation.get('name', email)
             values = {
                 'name': name,
