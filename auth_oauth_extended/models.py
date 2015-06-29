@@ -151,7 +151,7 @@ class res_users(osv.Model):
             provider_type = provider_obj['provider_type']
 
             if provider_type == 'qq':
-                oauth_uid = validation['openid']
+                oauth_uid = validation['nickname']
             elif provider_type == 'weixin':
                 oauth_uid = validation['openid']
             elif provider_type == 'weibo':
