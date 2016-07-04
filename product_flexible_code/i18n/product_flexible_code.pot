@@ -1,0 +1,218 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* product_flexible_code
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-03 16:27+0000\n"
+"PO-Revision-Date: 2016-07-03 16:27+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: product_flexible_code
+#: model:ir.actions.act_window,help:product_flexible_code.action_stock_category_views_act_window
+msgid "<p class=\"oe_view_nocontent_create\">\n"
+"            Click to add new stock category views\n"
+"        </p><p>\n"
+"            Something about model\n"
+"        </p>\n"
+"    "
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,account_category:0
+msgid "Accounting Category"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,complete_name:0
+msgid "Category Name"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,code:0
+msgid "Code"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:product.product,code_prefix:0
+#: field:product.template,code_prefix:0
+#: field:stock.category,complete_code:0
+msgid "Code Prefix"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,description:0
+msgid "Description"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,digits:0
+msgid "Digits"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: product_flexible_code
+#: view:stock.category:product_flexible_code.view_stock_category_search
+msgid "End Category"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,id:0
+msgid "ID"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,is_end:0
+msgid "Is End ?"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,parent_left:0
+msgid "Left Parent"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,name:0
+msgid "Name"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:product.product,renew_code:0
+msgid "New Code"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:product.product,optional_product_ids:0
+msgid "Optional Products"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,parent_id:0
+msgid "Parent Category"
+msgstr ""
+
+#. module: product_flexible_code
+#: model:ir.model,name:product_flexible_code.model_product_product
+msgid "Product"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:product.product,product_description_sample:0
+#: field:product.template,product_description_sample:0
+#: field:stock.category,product_description_sample:0
+msgid "Product Description Sample"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:product.product,product_description_template:0
+#: field:product.template,product_description_template:0
+#: field:stock.category,product_description_template:0
+msgid "Product Description Template"
+msgstr ""
+
+#. module: product_flexible_code
+#: model:ir.model,name:product_flexible_code.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:product.product,production_efficiency:0
+#: field:product.template,production_efficiency:0
+#: field:stock.category,production_efficiency:0
+msgid "Production Efficiency"
+msgstr ""
+
+#. module: product_flexible_code
+#: help:product.product,optional_product_ids:0
+msgid "Products to propose when add to cart."
+msgstr ""
+
+#. module: product_flexible_code
+#: view:product.product:product_flexible_code.product_normal_form_view_inherit_cat
+msgid "Renew Code"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,parent_right:0
+msgid "Right Parent"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,sequence:0
+msgid "Sequence"
+msgstr ""
+
+#. module: product_flexible_code
+#: model:ir.ui.menu,name:product_flexible_code.menu_stock_category_views
+#: field:product.product,stock_category:0
+#: view:product.template:product_flexible_code.product_template_search_view
+#: field:product.template,stock_category:0
+msgid "Stock Category"
+msgstr ""
+
+#. module: product_flexible_code
+#: view:stock.category:product_flexible_code.view_stock_category_form
+msgid "e.g. manufactor, model, packaging, value, length, weight, material"
+msgstr ""
+
+#. module: product_flexible_code
+#: model:ir.actions.act_window,name:product_flexible_code.action_stock_category_views_act_window
+msgid "stock category views"
+msgstr ""
+
+#. module: product_flexible_code
+#: view:stock.category:product_flexible_code.view_stock_category_form
+msgid "stock_category_form"
+msgstr ""
+
+#. module: product_flexible_code
+#: view:stock.category:product_flexible_code.view_stock_category_search
+msgid "stock_category_search"
+msgstr ""
+
+#. module: product_flexible_code
+#: view:stock.category:product_flexible_code.view_stock_category_tree
+msgid "stock_category_tree"
+msgstr ""
+
+#. module: product_flexible_code
+#: model:ir.model,name:product_flexible_code.model_stock_category
+msgid "the product category for flexible code generation"
+msgstr ""
+
