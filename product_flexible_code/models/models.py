@@ -341,12 +341,12 @@ class mrpBOM(models.Model):
     _inherit = 'mrp.bom'
 
     product_efficiency = fields.Float(
-        related='product_tmpl_id.product_efficiency'
+        related='product_tmpl_id.production_efficiency'
     )
 
 class mrpBOMLine(models.Model):
     _inherit = 'mrp.bom.line'
 
     product_efficiency = fields.Float(
-        related='product_id.product_efficiency'
+        related='product_id.production_efficiency'
     )
