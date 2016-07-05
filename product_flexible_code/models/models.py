@@ -299,10 +299,59 @@ class productTemplate(models.Model):
         related="stock_category.production_efficiency"
     )
 
+    similar_products = fields.One2many(
+        string='Similar Products',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        comodel_name='product.template',
+        inverse_name='parent_product',
+        domain=[],
+        context={},
+        auto_join=False,
+        limit=10
+    )
+
+    parent_product = fields.Many2one(
+        string='Parent Product',
+        required=False,
+        readonly=False,
+        index=False,
+        default=None,
+        help=False,
+        comodel_name='product.template',
+        domain=[],
+        context={},
+        ondelete='cascade',
+        auto_join=False
+    )
+
     @api.onchange('stock_category')
     def _onchange_stock_category(self):
         if self.stock_category.account_category:
             self.categ_id = self.stock_category.account_category
+
+    @api.onchange('description')
+    def _onchange_description(self):
+        desc_string = self.description
+        desc_list = desc_string.split(u'，')
+        domain = []
+
+        for i in desc_list:
+            t = ('description', 'ilike', '%s' % i)
+            # domain.append('|')
+            domain.append(t)
+
+        for x in range(len(domain) - 1):
+            domain.insert(0, '|')
+
+        _logger.info(domain)
+
+        products = self.search(domain)
+
+        return {'value': {'similar_products': products}}
 
 
 class productProduct(models.Model):
@@ -320,12 +369,10 @@ class productProduct(models.Model):
 
     @api.model
     def create(self, values):
-        if values.get('stock_category'):
-            sequence = self.env['stock.category'].search([('id', '=', values['stock_category'])]).sequence
-            prefix = self.env['stock.category'].search([('id', '=', values['stock_category'])]).parent_id.complete_code
-            values.update({'default_code': '%s%s' % (prefix, sequence.next_by_id(sequence.id))})
-        result = super(productProduct, self).create(values)
-        return result
+        product = super(productProduct, self).create(values)
+        if product.stock_category:
+            product.button_renew_code()
+        return product
 
     @api.one
     def button_renew_code(self):

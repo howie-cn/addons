@@ -150,11 +150,13 @@
         <field name="type" position="before">
           <field name="stock_category" />
         </field>
-        <field name="description" position="before">
+        <field name="description" position="replace">
           <group>
           <field name="production_efficiency" />
           <field name="product_description_template" />
           <field name="product_description_sample" />
+          <field name="description" />
+          <field name="similar_products" readonly="1"/>
         </group>
         </field>
     </field>
