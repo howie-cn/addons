@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-05 19:45+0800\n"
-"PO-Revision-Date: 2016-07-05 19:47+0800\n"
+"PO-Revision-Date: 2016-07-05 20:01+0800\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -77,7 +77,7 @@ msgstr "底层类别"
 #. module: product_flexible_code
 #: field:stock.category,id:0
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: product_flexible_code
 #: field:stock.category,is_end:0
@@ -182,7 +182,7 @@ msgstr "序列"
 #: field:product.product,similar_products:0
 #: field:product.template,similar_products:0
 msgid "Similar Products"
-msgstr "那些分类是为了将相似的产品进行分组以进行电子商务的销售."
+msgstr "相似的产品"
 
 #. module: product_flexible_code
 #: model:ir.ui.menu,name:product_flexible_code.menu_stock_category_views
@@ -205,17 +205,17 @@ msgstr "库存类别"
 #. module: product_flexible_code
 #: view:stock.category:product_flexible_code.view_stock_category_form
 msgid "stock_category_form"
-msgstr "stock_category_form"
+msgstr ""
 
 #. module: product_flexible_code
 #: view:stock.category:product_flexible_code.view_stock_category_search
 msgid "stock_category_search"
-msgstr "stock_category_search"
+msgstr ""
 
 #. module: product_flexible_code
 #: view:stock.category:product_flexible_code.view_stock_category_tree
 msgid "stock_category_tree"
-msgstr "stock_category_tree"
+msgstr ""
 
 #. module: product_flexible_code
 #: model:ir.model,name:product_flexible_code.model_stock_category
