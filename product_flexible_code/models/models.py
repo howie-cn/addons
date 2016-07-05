@@ -73,7 +73,7 @@ class stockCategory(models.Model):
     )
 
     digits = fields.Integer(
-        string='Digits',
+        string=u'此分类产品流水码位数',
         required=False,
         readonly=False,
         index=False,
@@ -96,7 +96,7 @@ class stockCategory(models.Model):
     )
 
     product_description_template = fields.Char(
-        string='Product Description Template',
+        string=u'此分类产品描述规则',
         required=False,
         readonly=False,
         index=False,
@@ -106,7 +106,7 @@ class stockCategory(models.Model):
     )
 
     product_description_sample = fields.Char(
-        string='Product Description Sample',
+        string=u'此分类产品描述实例',
         required=False,
         readonly=False,
         index=False,
@@ -116,7 +116,7 @@ class stockCategory(models.Model):
     )
 
     account_category = fields.Many2one(
-        string='Accounting Category',
+        string=u'此分类产品默认会计类别',
         required=False,
         readonly=False,
         index=False,
@@ -130,7 +130,7 @@ class stockCategory(models.Model):
     )
 
     production_efficiency = fields.Float(
-        string='Production Efficiency',
+        string=u'此分类产品默认生产效率',
         required=False,
         readonly=False,
         index=False,

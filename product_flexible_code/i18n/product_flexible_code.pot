@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-03 16:27+0000\n"
-"PO-Revision-Date: 2016-07-03 16:27+0000\n"
+"POT-Creation-Date: 2016-07-05 11:45+0000\n"
+"PO-Revision-Date: 2016-07-05 11:45+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -18,16 +18,16 @@ msgstr ""
 #. module: product_flexible_code
 #: model:ir.actions.act_window,help:product_flexible_code.action_stock_category_views_act_window
 msgid "<p class=\"oe_view_nocontent_create\">\n"
-"            Click to add new stock category views\n"
+"            Click to add new stock category\n"
 "        </p><p>\n"
-"            Something about model\n"
+"        \n"
 "        </p>\n"
 "    "
 msgstr ""
 
 #. module: product_flexible_code
-#: field:stock.category,account_category:0
-msgid "Accounting Category"
+#: model:ir.model,name:product_flexible_code.model_mrp_bom
+msgid "Bill of Material"
 msgstr ""
 
 #. module: product_flexible_code
@@ -60,11 +60,6 @@ msgstr ""
 #. module: product_flexible_code
 #: field:stock.category,description:0
 msgid "Description"
-msgstr ""
-
-#. module: product_flexible_code
-#: field:stock.category,digits:0
-msgid "Digits"
 msgstr ""
 
 #. module: product_flexible_code
@@ -128,6 +123,12 @@ msgid "Parent Category"
 msgstr ""
 
 #. module: product_flexible_code
+#: field:product.product,parent_product:0
+#: field:product.template,parent_product:0
+msgid "Parent Product"
+msgstr ""
+
+#. module: product_flexible_code
 #: model:ir.model,name:product_flexible_code.model_product_product
 msgid "Product"
 msgstr ""
@@ -135,14 +136,12 @@ msgstr ""
 #. module: product_flexible_code
 #: field:product.product,product_description_sample:0
 #: field:product.template,product_description_sample:0
-#: field:stock.category,product_description_sample:0
 msgid "Product Description Sample"
 msgstr ""
 
 #. module: product_flexible_code
 #: field:product.product,product_description_template:0
 #: field:product.template,product_description_template:0
-#: field:stock.category,product_description_template:0
 msgid "Product Description Template"
 msgstr ""
 
@@ -154,7 +153,6 @@ msgstr ""
 #. module: product_flexible_code
 #: field:product.product,production_efficiency:0
 #: field:product.template,production_efficiency:0
-#: field:stock.category,production_efficiency:0
 msgid "Production Efficiency"
 msgstr ""
 
@@ -179,6 +177,12 @@ msgid "Sequence"
 msgstr ""
 
 #. module: product_flexible_code
+#: field:product.product,similar_products:0
+#: field:product.template,similar_products:0
+msgid "Similar Products"
+msgstr ""
+
+#. module: product_flexible_code
 #: model:ir.ui.menu,name:product_flexible_code.menu_stock_category_views
 #: field:product.product,stock_category:0
 #: view:product.template:product_flexible_code.product_template_search_view
@@ -193,7 +197,7 @@ msgstr ""
 
 #. module: product_flexible_code
 #: model:ir.actions.act_window,name:product_flexible_code.action_stock_category_views_act_window
-msgid "stock category views"
+msgid "stock category"
 msgstr ""
 
 #. module: product_flexible_code
@@ -214,5 +218,30 @@ msgstr ""
 #. module: product_flexible_code
 #: model:ir.model,name:product_flexible_code.model_stock_category
 msgid "the product category for flexible code generation"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,product_description_sample:0
+msgid "此分类产品描述实例"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,product_description_template:0
+msgid "此分类产品描述规则"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,digits:0
+msgid "此分类产品流水码位数"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,account_category:0
+msgid "此分类产品默认会计类别"
+msgstr ""
+
+#. module: product_flexible_code
+#: field:stock.category,production_efficiency:0
+msgid "此分类产品默认生产效率"
 msgstr ""
 
