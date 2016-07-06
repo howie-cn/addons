@@ -336,7 +336,10 @@ class productTemplate(models.Model):
     @api.onchange('description')
     def _onchange_description(self):
         desc_string = self.description
-        desc_list = desc_string.split(u'，')
+        if not isinstance(desc_string, basestring):
+            return False
+        import re
+        decs_list = re.split(ur"[;,\s，。；：]\s*", desc_string)
         domain = []
 
         for i in desc_list:
@@ -370,6 +373,8 @@ class productProduct(models.Model):
     @api.model
     def create(self, values):
         product = super(productProduct, self).create(values)
+        _logger.info('product temples')
+        _logger.info(product.product_tmpl_id.default_code)
         if product.stock_category:
             product.button_renew_code()
         return product
@@ -378,8 +383,11 @@ class productProduct(models.Model):
     def button_renew_code(self):
         if self.stock_category:
             sequence = self.stock_category.sequence
-            prefix = self.stock_category.parent_id.complete_code
-            code = '%s%s' % (prefix, sequence.next_by_id(sequence.id))
+            if self.stock_category.parent_id:
+                prefix = self.stock_category.parent_id.complete_code
+                code = '%s%s' % (prefix, sequence.next_by_id(sequence.id))
+            else:
+                code = '%s' % (sequence.next_by_id(sequence.id))
 
             self.default_code = code
 
