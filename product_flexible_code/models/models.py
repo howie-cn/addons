@@ -295,8 +295,7 @@ class productTemplate(models.Model):
         required=False,
         readonly=False,
         index=False,
-        help=False,
-        related="stock_category.production_efficiency"
+        help=False
     )
 
     similar_products = fields.One2many(
@@ -330,6 +329,9 @@ class productTemplate(models.Model):
 
     @api.onchange('stock_category')
     def _onchange_stock_category(self):
+        _logger.info(self.stock_category.production_efficiency)
+        self.production_efficiency = self.stock_category.production_efficiency
+
         if self.stock_category.account_category:
             self.categ_id = self.stock_category.account_category
 
@@ -352,9 +354,7 @@ class productTemplate(models.Model):
 
         _logger.info(domain)
 
-        products = self.search(domain)
-
-        return {'value': {'similar_products': products}}
+        self.similar_products = self.search(domain)
 
 
 class productProduct(models.Model):
@@ -396,12 +396,14 @@ class mrpBOM(models.Model):
     _inherit = 'mrp.bom'
 
     product_efficiency = fields.Float(
-        related='product_tmpl_id.production_efficiency'
+        related='product_tmpl_id.production_efficiency',
+        readonly=True
     )
 
 class mrpBOMLine(models.Model):
     _inherit = 'mrp.bom.line'
 
     product_efficiency = fields.Float(
-        related='product_id.production_efficiency'
+        related='product_id.production_efficiency',
+        readonly=True
     )
