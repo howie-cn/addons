@@ -395,15 +395,27 @@ class productProduct(models.Model):
 class mrpBOM(models.Model):
     _inherit = 'mrp.bom'
 
-    product_efficiency = fields.Float(
-        related='product_tmpl_id.production_efficiency',
-        readonly=True
-    )
+    def onchange_product_tmpl_id(self, cr, uid, ids, product_tmpl_id, product_qty=0, context=None):
+        res = super(mrpBOM, self).onchange_product_tmpl_id(cr, uid, ids, product_tmpl_id, product_qty=product_qty, context=context)
+        prod = self.pool.get('product.template').browse(cr, uid, product_tmpl_id, context=context)
+        d = {
+            'product_efficiency': prod.production_efficiency
+        }
+        if res.get('value'):
+            res['value'].update(d)
+
+        return res
 
 class mrpBOMLine(models.Model):
     _inherit = 'mrp.bom.line'
 
-    product_efficiency = fields.Float(
-        related='product_id.production_efficiency',
-        readonly=True
-    )
+    def onchange_product_id(self, cr, uid, ids, product_id, product_qty=0, context=None):
+        res = super(mrpBOMLine, self).onchange_product_id(cr, uid, ids, product_id, product_qty=product_qty, context=context)
+        prod = self.pool.get('product.product').browse(cr, uid, product_id, context=context)
+        d = {
+            'product_efficiency': prod.production_efficiency
+        }
+        if res.get('value'):
+            res['value'].update(d)
+
+        return res
