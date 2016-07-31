@@ -7,7 +7,7 @@ provider | authorize url | validation url | user detail url | scope
 qq | https://graph.qq.com/oauth2.0/authorize | https://graph.qq.com/oauth2.0/me | https://graph.qq.com/oauth2.0/get_user_info | userinfo
 dingtalk | https://oapi.dingtalk.com/connect/oauth2/sns_authorize |  https://oapi.dingtalk.com/sns/get_sns_token  | https://oapi.dingtalk.com/sns/getuserinfo | snsapi_login
 weixin| https://open.weixin.qq.com/connect/oauth2/authorize | https://api.weixin.qq.com/sns/oauth2/access_token | https://api.weixin.qq.com/sns/userinfo | snsapi_userinfo
-weibo | https://api.weibo.com/oauth2/authorize | http://api.weibo.com/oauth2/access_token | http://api.weibo.com/oauth2/get_token_info | email |
+weibo | https://api.weibo.com/oauth2/authorize | https://api.weibo.com/oauth2/access_token | https://api.weibo.com/oauth2/get_token_info | email |
 
 
 
