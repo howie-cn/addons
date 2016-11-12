@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+        <record model="ir.module.category" id="module_category_advanced_approval">
+            <field name="name">Advanced Approval</field>
+            <field name="sequence">102</field>
+        </record>
+        <record model="res.groups" id="group_director_nontechnical">
+            <field name="name">Non-Technical Director</field>
+            <field name="category_id" ref="purchase_advanced_validation.module_category_advanced_approval" />
+        </record>
+        <record model="res.groups" id="group_director_technical">
+            <field name="name">Technical Director</field>
+            <field name="category_id" ref="purchase_advanced_validation.module_category_advanced_approval" />
+        </record>
+        <record model="res.groups" id="group_boss">
+            <field name="name">Boss</field>
+            <field name="category_id" ref="purchase_advanced_validation.module_category_advanced_approval" />
+        </record>
+    </data>
+</openerp>
