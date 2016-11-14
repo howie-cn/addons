@@ -12,7 +12,7 @@
             <field name="condition">amount_total &lt; 3000</field>
         </record>
         <record id="purchase_double_validation.trans_confirmed_double_gt" model="workflow.transition">
-            <field name="condition">amount_total &gt;= 3000 and amount_total &lt; 10000 and not technical</field>
+            <field name="condition">amount_total &gt;= 3000 and amount_total &lt; 10000 and other</field>
             <field name="group_id" ref="purchase_advanced_validation.group_director_nontechnical" />
         </record>
         <record id="trans_confirmed_double_lt_dirctor_technical" model="workflow.transition">
@@ -22,11 +22,18 @@
             <field name="condition">amount_total &gt;= 3000 and amount_total &lt; 10000 and technical</field>
             <field name="group_id" ref="purchase_advanced_validation.group_director_technical" />
         </record>
+        <record id="trans_confirmed_double_lt_dirctor_production" model="workflow.transition">
+            <field name="act_from" ref="purchase_double_validation.act_double_check" />
+            <field name="act_to" ref="purchase_double_validation.act_double_wait" />
+            <field name="signal">purchase_approve_production</field>
+            <field name="condition">amount_total &gt;= 3000 and amount_total &lt; 10000 and production</field>
+            <field name="group_id" ref="purchase_advanced_validation.group_director_production" />
+        </record>
         <record id="trans_confirmed_double_gt_dirctor_nontechnical" model="workflow.transition">
             <field name="act_from" ref="purchase_double_validation.act_double_check" />
             <field name="act_to" ref="purchase_advanced_validation.act_advance_check" />
             <field name="signal">purchase_approve</field>
-            <field name="condition">amount_total &gt;= 10000 and not technical</field>
+            <field name="condition">amount_total &gt;= 10000 and other</field>
             <field name="group_id" ref="purchase_advanced_validation.group_director_nontechnical" />
         </record>
         <record id="trans_confirmed_double_gt_dirctor_technical" model="workflow.transition">
@@ -35,6 +42,13 @@
             <field name="signal">purchase_approve_technical</field>
             <field name="condition">amount_total &gt;= 10000 and technical</field>
             <field name="group_id" ref="purchase_advanced_validation.group_director_technical" />
+        </record>
+        <record id="trans_confirmed_double_gt_dirctor_production" model="workflow.transition">
+            <field name="act_from" ref="purchase_double_validation.act_double_check" />
+            <field name="act_to" ref="purchase_advanced_validation.act_advance_check" />
+            <field name="signal">purchase_approve_production</field>
+            <field name="condition">amount_total &gt;= 10000 and production</field>
+            <field name="group_id" ref="purchase_advanced_validation.group_director_production" />
         </record>
         <record id="trans_confirmed_double_gt_boss" model="workflow.transition">
             <field name="act_from" ref="purchase_advanced_validation.act_advance_check" />

@@ -32,4 +32,10 @@ class purchase(models.Model):
         default=False,
     )
 
+    case_type = fields.Selection(
+        string='Case Type',
+        default='other',
+        selection=[('other','Other'),('technical', 'Technical'), ('production', 'Production')]
+    )
+
     state = fields.Selection(selection_add=[('validated', "Validated")])

@@ -6,11 +6,15 @@
             <field name="sequence">102</field>
         </record>
         <record model="res.groups" id="group_director_nontechnical">
-            <field name="name">Non-Technical Director</field>
+            <field name="name">Other Director</field>
             <field name="category_id" ref="purchase_advanced_validation.module_category_advanced_approval" />
         </record>
         <record model="res.groups" id="group_director_technical">
             <field name="name">Technical Director</field>
+            <field name="category_id" ref="purchase_advanced_validation.module_category_advanced_approval" />
+        </record>
+        <record model="res.groups" id="group_director_production">
+            <field name="name">Production Director</field>
             <field name="category_id" ref="purchase_advanced_validation.module_category_advanced_approval" />
         </record>
         <record model="res.groups" id="group_boss">

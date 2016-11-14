@@ -7,12 +7,14 @@
             <field name="inherit_id" ref="purchase.purchase_order_form" />
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='purchase_approve']" position="replace">
-                    <button name="purchase_approve" string="Approve Order [Non-Technical]" class="oe_highlight" groups="purchase.group_purchase_manager" attrs="{'invisible': ['|','|',('amount_total', '&lt;', 3000 ),('technical', '=', True ), ('state', 'not in' ,('confirmed'))]} " />
-                    <button name="purchase_approve_technical" string="Approve Order [Technical]" class="oe_highlight" groups="purchase.group_purchase_manager" attrs="{'invisible': ['|','|',('amount_total', '&lt;', 3000 ),('technical', '=', False ) ,('state', 'not in' ,('confirmed'))]} " />
+                    <button name="purchase_approve" string="Approve Order [Non-Technical]" class="oe_highlight" groups="purchase.group_purchase_manager" attrs="{'invisible': ['|','|',('amount_total', '&lt;', 3000 ),('case_type', 'in', ['production',technical'] ), ('state', 'not in' ,('confirmed'))]} " />
+                    <button name="purchase_approve_technical" string="Approve Order [Technical]" class="oe_highlight" groups="purchase.group_purchase_manager" attrs="{'invisible': ['|','|',('amount_total', '&lt;', 3000 ),('case_type', 'in', ['production','other'] ) ,('state', 'not in' ,('confirmed'))]} " />
+                    <button name="purchase_approve_production" string="Approve Order [Production]" class="oe_highlight" groups="purchase.group_purchase_manager" attrs="{'invisible': ['|','|',('amount_total', '&lt;', 3000 ),('case_type', 'in', ['other','technical'] ) ,('state', 'not in' ,('confirmed'))]} " />
                     <button name="boss_approve" string="Approve Order [Boss]" class="oe_highlight" groups="purchase.group_purchase_manager" attrs="{'invisible': ['|',('amount_total', '&lt;', 10000 ),('state', 'not in' ,('validated'))]}" />
                 </xpath>
                 <xpath expr="//field[@name='journal_id']" position="after">
-                    <field name="technical" />
+                    <!-- <field name="technical" /> -->
+                    <field name="case_type" />
                 </xpath>
             </field>
         </record>
