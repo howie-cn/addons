@@ -1,0 +1,198 @@
+<openerp>
+  <data>
+<!-- VIEWS: "stock category views"
+
+    - Model·········: stock.category
+    - _rec_name·····: complete_name
+    - Domain········: []
+    - Context·······: {}
+    - Parent menu ··: stock.menu_product_in_config_stock
+    - View priority·: 16    Sequence····: 10
+    - Action help···: Something about stock.category
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<!-- Tree view for "stock.category" -->
+<record id="view_stock_category_tree" model="ir.ui.view">
+    <field name="name">view.stock.category.tree</field>
+    <field name="model">stock.category</field>
+    <field name="type">tree</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+        <tree string="stock_category_tree" create="1" delete="1" edit="1">
+            <field name="complete_name" />
+            <field name="complete_code" />
+            <!-- ··· -->
+        </tree>
+    </field>
+</record>
+<!-- Form view for "stock.category" -->
+<record id="view_stock_category_form" model="ir.ui.view">
+    <field name="name">view.stock.category.form</field>
+    <field name="model">stock.category</field>
+    <field name="type">form</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+        <form string="stock_category_form" create="1" delete="1" edit="1">
+            <sheet>
+                <div class="oe_title">
+                    <label for="complete_name" class="oe_edit_only" />
+                    <field name="complete_name" class="oe_field_complete_name" />
+                </div>
+                <group>
+                    <field name="parent_id" domain="[('is_end', '!=', True)]" />
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="is_end" />
+                </group>
+                <group attrs="{'invisible': [('is_end', '!=', True)]}">
+                    <field name="product_description_template"  placeholder="e.g. manufactor, model, packaging, value, length, weight, material"/>
+                    <field name="product_description_sample" />
+                    <field name="production_efficiency" />
+                    <field name="account_category" />
+                    <field name="complete_code" />
+                    <field name="digits" />
+                    <field name="sequence" readonly='1' />
+                    <field name="description" />
+                </group>
+                <!-- ··· -->
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<!-- Search view for "stock.category" -->
+<record id="view_stock_category_search" model="ir.ui.view">
+    <field name="name">view.stock.category.search</field>
+    <field name="model">stock.category</field>
+    <field name="type">search</field>
+    <field name="mode">primary</field>
+    <field name="priority" eval="16" />
+    <field name="active" eval="True" />
+    <field name="arch" type="xml">
+        <search string="stock_category_search">
+            <field name="complete_name" />
+            <field name="complete_code" />
+            <filter string="End Category"
+                name="end"
+                domain="[('is_end','=',True)]"
+                context="{}"
+                help="" />
+            <!-- ··· -->
+        </search>
+    </field>
+</record>
+
+<!-- Main window action for model.name -->
+<record id="action_stock_category_views_act_window" model="ir.actions.act_window">
+    <field name="type">ir.actions.act_window</field>
+    <field name="name">stock category</field>
+    <field name="res_model">stock.category</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_type">form</field>
+    <field name="target">current</field>
+    <field name="domain">[]</field>
+    <field name="context">{
+      'search_default_end': 1
+      }
+    </field>
+    <field name="search_view_id" ref="view_stock_category_search" />
+    <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+            Click to add new stock category
+        </p><p>
+        
+        </p>
+    </field>
+</record>
+
+<!-- Main menu for model.name -->
+<record id="menu_stock_category_views" model="ir.ui.menu" >
+    <field name="name">Stock Category</field>
+    <field name="sequence" eval="10" />
+    <field name="action" ref="action_stock_category_views_act_window" />
+    <field name="parent_id" ref="stock.menu_product_in_config_stock" />
+</record>
+
+<record id="product_template_search_view" model="ir.ui.view">
+    <field name="name">product.template.search</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_search_view" />
+    <field name="arch" type="xml">
+        <xpath expr="//group" position="inside">
+            <filter string='Stock Category' domain="[]" context="{'group_by' : 'stock_category'}" />
+            </xpath>
+    </field>
+</record>
+
+
+
+<record id="product_template_tree_view" model="ir.ui.view">
+    <field name="name">product.template.product.tree</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_tree_view" />
+    <field name="arch" type="xml">
+            <field name="name" position='after' >
+            <field name="stock_category" />
+          </field>
+    </field>
+</record>
+
+
+<record id="product_template_form_view_inherit_cat" model="ir.ui.view">
+    <field name="name">product.template.form.inherit.cat</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_form_view" />
+    <field name="arch" type="xml">
+        <field name="type" position="before">
+          <field name="stock_category" />
+        </field>
+        <field name="description" position="replace">
+          <group>
+          <field name="production_efficiency" />
+          <field name="product_description_template" readonly="1"/>
+          <field name="product_description_sample" readonly="1"/>
+          <field name="description" />
+          <field name="similar_products" readonly="1"/>
+        </group>
+        </field>
+    </field>
+</record>
+
+<record id="product_template_only_form_view" model="ir.ui.view">
+    <field name="name">product.template.product.form</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view" />
+    <field name="arch" type="xml">
+        <field name="default_code" position="attributes">
+            <attribute name="attrs">{ 'invisible': [('product_variant_count', '>', 1)], 'readonly': [('stock_category','!=',False)]}</attribute>
+        </field>
+    </field>
+</record>
+
+<record id="product_normal_form_view_inherit_cat" model="ir.ui.view">
+    <field name="name">product.normal.form.inherit.cat</field>
+    <field name="model">product.product</field>
+    <field name="inherit_id" ref="product.product_normal_form_view" />
+    <field name="arch" type="xml">
+        <field name="default_code" position="after">
+          <button name="button_renew_code"
+                  string="Renew Code"
+                  type="object"
+                  attrs="{'invisible': [('stock_category','=',False)]}"
+                 /> 
+        </field>
+        <field name="default_code" position="attributes">
+            <attribute name="attrs">{'readonly': [('stock_category','!=',False)]}</attribute>
+        </field>
+    </field>
+</record>
+
+
+ 
+
+  </data>
+</openerp>

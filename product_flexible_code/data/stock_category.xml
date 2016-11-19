@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="cate_00" model="stock.category">
+            <field name='name'>原材料</field>
+            <field name='code'>CL</field>
+            <field name='digits'>4</field>
+            <field name='is_end' eval='False' />
+        </record>
+        <record id="cate_01" model="stock.category">
+            <field name='name'>半成品</field>
+            <field name='code'>BC</field>
+            <field name='digits'>4</field>
+            <field name='is_end' eval='False' />
+        </record>
+        <record id="cate_02" model="stock.category">
+            <field name='name'>成品</field>
+            <field name='code'>CP</field>
+            <field name='digits'>4</field>
+            <field name='is_end'  eval='True' />
+        </record>
+        <record id="cate_10" model="stock.category">
+            <field name='name'>结构件</field>
+            <field name='code'>JG</field>
+            <field name='digits'>4</field>
+            <field name='is_end' eval='False' />
+            <field name='parent_id' ref="product_flexible_code.cate_00" />
+        </record>
+        <record id="cate_11" model="stock.category">
+            <field name='name'>贴片件</field>
+            <field name='code'>TP</field>
+            <field name='digits'>4</field>
+            <field name='is_end' eval='False' />
+            <field name='parent_id' ref="product_flexible_code.cate_00" />
+        </record>
+        <record id="cate_12" model="stock.category">
+            <field name='name'>插入件</field>
+            <field name='code'>DIP</field>
+            <field name='digits'>4</field>
+            <field name='is_end' eval='False' />
+            <field name='parent_id' ref="product_flexible_code.cate_00" />
+        </record>
+        <record id="cate_13" model="stock.category">
+            <field name='name'>包材</field>
+            <field name='code'>BC</field>
+            <field name='digits'>4</field>
+            <field name='is_end' eval='False' />
+            <field name='parent_id' ref="product_flexible_code.cate_00" />
+        </record>
+        <record id="cate_14" model="stock.category">
+            <field name='name'>裸机</field>
+            <field name='code'>LJ</field>
+            <field name='digits'>4</field>
+            <field name='is_end' eval='True' />
+            <field name='parent_id' ref="product_flexible_code.cate_01" />
+        </record>
+        <record id="cate_15" model="stock.category">
+            <field name='name'>配件</field>
+            <field name='code'>PJ</field>
+            <field name='digits'>4</field>
+            <field name='is_end' eval='True' />
+            <field name='parent_id' ref="product_flexible_code.cate_01" />
+        </record>
+    </data>
+</openerp>
