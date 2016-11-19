@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_view_invoice']" position="before">
+                    <button name="boss_approve" string="Approve Order [Director]" class="oe_highlight" groups="sale.group_sale_manager" attrs="{'invisible': [('state', 'not in' ,('sent'))]}" />
+                    <button name="boss_approve" string="Approve Order [Boss]" class="oe_highlight" groups="sale.group_sale_manager" attrs="{'invisible': ['|',('amount_total', '&lt;', 50000 ),('state', 'not in' ,('validated'))]}" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
