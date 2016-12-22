@@ -26,9 +26,7 @@ class sale_order_add_multiple(models.TransientModel):
                 product = self.env['product.product'].sudo().browse(product_id.id)
                 val = {
                     'name': product.name,
-                    'product_type': product.product_type,
                     'default_code': product.default_code,
-                    'product_name': product.name,
                     'product_uom_qty': self.quantity,
                     'order_id': active_id,
                     'product_id': product_id.id or False,
@@ -42,9 +40,7 @@ class sale_order_add_multiple(models.TransientModel):
                 product = self.env['product.product'].sudo().browse(product_id.id)
                 val = {
                     'name': product.name,
-                    'product_type': product.product_type,
                     'default_code': product.default_code,
-                    'product_name': product.name,
                     'product_qty': self.quantity,
                     'order_id': active_id,
                     'product_id': product_id.id or False,
