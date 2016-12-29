@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="sale_order_add_multiple_view">
+            <field name="name">sale.order.add_multiple.form</field>
+            <field name="model">sale.order.add_multiple</field>
+            <field name="arch" type="xml">
+                <form string="Add Multiple">
+                    <group>
+                        <field name="quantity"/>
+                        <field name="products_ids"/>
+                    </group>
+                <footer>
+                    <button name="add_multiple" type="object" class="oe_highlight" string="添加"/>
+                    or 
+                    <button string="取消" class="oe_link" special="cancel"/>
+                </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_sale_add_multiple">
+            <field name="name">批量添加</field>
+            <field name="res_model">sale.order.add_multiple</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="context">{'sale_flag':True}</field>
+            <field name="view_id" ref="sale_order_add_multiple_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_sale_add_multiple_2">
+            <field name="name">批量添加</field>
+            <field name="res_model">sale.order.add_multiple</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="context">{'sale_flag':False}</field>
+            <field name="view_id" ref="sale_order_add_multiple_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <field name="order_line" position="before">
+                    <button name="%(action_sale_add_multiple)d" type="action" string="批量添加"  icon="terp-document-new" attrs="{'invisible':[('state','not in',['draft','sent'])]}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_order_form_2" model="ir.ui.view">
+            <field name="name">purchase.order.form.2</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                <field name="order_line" position="before">
+                    <button name="%(action_sale_add_multiple_2)d" type="action" string="批量添加"  icon="terp-document-new" attrs="{'invisible':[('state','not in',['draft','sent'])]}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
