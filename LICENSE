@@ -1,15 +1,37 @@
-OpenERP is published under the GNU AFFERO GENERAL PUBLIC LICENSE, Version 3
-(AGPLv3), as included below. Some external libraries and contributions bundled
-with OpenERP may be published under other AGPLv3-compatible licenses. For
-these, please refer to the relevant source files and/or license files, in the
-source code tree.
+Copyright © 2019 Jeffery <jeffery9@gmail.com>
+The 996ICU License (996ICU)
 
-**************************************************************************
+996ICU License is an extented license for agpl-3.0.
+This license extended agpl-3.0, and agpl-3.0 will be declared at the foot of this license.
+
+Individual who seeks authorization must fulfill the following obligations:
+
+1. Including this authorization file in any of its copies and important parts of the software.
+
+Organization that seeks authorization must fulfill the following obligations:
+
+1. Including this authorization file in any of its copies and important parts of the software.
+2. Not forcing any employee or temporary worker to work in excess of the legal maximum working time in any form or by any means, including but not limited to: orders, threats, implications, etc.
+3. Not retaliating against any employee or temporary worker without participating in labor in excess of the legal maximum working time in any form or by any means, including but not limited to: mental assaults, personal injuries, illegal deductions of due remuneration, illegal dismissals, etc.
+4. Paying economic compensation at no lower than the standards stipulated by local laws and regulations, when organizing employees or temporary workers to work overtime.
+5. This organization is not in the blacklist[^1] as stipulated in the agreement.
+
+If the authorized individual or organization fails to fulfill any of the above obligations, the authorization will be withdrawn.
+
+The undefined behavior of this license is handled by agpl-3.0. The part of agpl-3.0 that conflicts with this agreement is handled in accordance with this agreement.
+
+
+* Discussion https://github.com/996icu/996.ICU/pull/15642
+* 996 from https://feathub.com/LinXueyuanStdio/996.ICU
+* [^1]: blacklist https://github.com/996icu/996.ICU/blob/master/blacklist/blacklist.md
+
+agpl-3.0
+--------------------------------------------------------------------------------
 
                     GNU AFFERO GENERAL PUBLIC LICENSE
                        Version 3, 19 November 2007
 
- Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+ Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
@@ -641,8 +663,8 @@ the "copyright" line and a pointer to where the full notice is found.
     Copyright (C) <year>  <name of author>
 
     This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU Affero General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
+    it under the terms of the GNU Affero General Public License as published
+    by the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -651,7 +673,7 @@ the "copyright" line and a pointer to where the full notice is found.
     GNU Affero General Public License for more details.
 
     You should have received a copy of the GNU Affero General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 Also add information on how to contact you by electronic and paper mail.
 
@@ -666,4 +688,5 @@ specific requirements.
   You should also get your employer (if you work as a programmer) or school,
 if any, to sign a "copyright disclaimer" for the program, if necessary.
 For more information on this, and how to apply and follow the GNU AGPL, see
-<http://www.gnu.org/licenses/>.
+<https://www.gnu.org/licenses/>.
+
